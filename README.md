@@ -1,2 +1,3 @@
-# OI
-My OI repository
+My own **OI** codes.
+
+To study.
