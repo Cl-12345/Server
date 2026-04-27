@@ -1,0 +1,6 @@
+# 这里的 name 必须和你在 Cloudflare 后台创建的 Worker 名称完全一致
+name = "shiny-tooth-d915"
+# 入口文件
+main = "index.js"
+# 兼容性日期（直接用最新的即可）
+compatibility_date = "2026-04-27"
