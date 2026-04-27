@@ -11,8 +11,12 @@
 
 export default {
   async fetch(request, env, ctx) {
-    // You can view your logs in the Observability dashboard
-    console.info({ message: 'Hello World Worker received a request!' }); 
-    return new Response('./test.html');
+    const html = await import('./test.html')
+
+    return new Response(html.default, {
+      headers: {
+        "Content-Type": "text/html; charset=utf-8"
+      }
+    });
   }
 };
