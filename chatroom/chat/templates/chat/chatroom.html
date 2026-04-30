@@ -14,9 +14,23 @@
             background-color: rgb(238, 238, 238);
             border-radius: 7px;
         }
+        .message_box{
+            margin: auto;
+            padding: 10px;
+            width: 90%;
+        }
+        #message{
+            margin: 5px;
+            width: 90%;
+        }
     </style>
 </head>
 <body>
     <div class="chatbox">{{roomname}}</div>
+    <form action="submit", class="message_box">
+        <input type="text" name="message" id="message">
+        <input type="button" value="发送">
+    </form>
+    
 </body>
 </html>

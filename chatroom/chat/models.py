@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 
 class Chatroom(models.Model):
     # ID = models.IntegerField('id', default=0)
-    Name = models.CharField('room_name', max_length=20)
+    Name = models.CharField('room_name', max_length=20, unique=True)
     Description = models.CharField('description', max_length=1024)
     # a = models.
     def __str__(self) -> str:

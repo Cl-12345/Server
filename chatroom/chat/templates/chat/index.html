@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>聊天室</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .chatroom{
+            border: 2px solid black;
+            width: 80%;
+            height: 80vh;
+            margin: auto;
+            border-radius: 10px;
+        }
+        .room{
+            width: 10%;
+            height: 10%;
+            padding: 10px;
+            /* background-color: #000; */
+            border-radius: 10px;
+            margin: 10px;
+            border: 1px solid black;
+            display: inline-flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+        .room_but{
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-    请等待分配
+    <h1 style="text-align: center;">聊天室列表</h1>
+    <div class="chatroom">
+    {%for i in rooms%}
+        <div class="room">
+            <p>{{i}}</p>
+            <input type="button" value="进入" id="{{i}}" class="room_but"> 
+        </div>
+    {%endfor%}
+    </div>
+    <script>
+        $(".room_but").on('click', function(e){
+            window.location.href = e.target.id + '/'
+        });
+    </script>
 </body>
 </html>

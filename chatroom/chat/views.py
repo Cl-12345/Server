@@ -3,13 +3,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Chatroom
 
-def error(req):
-    return HttpResponse('<p>你来到了未知的区域</p>')
 
 def index(req):
-    return render(req, 'chat/index.html')
+    return render(req, 'chat/index.html', {'rooms': Chatroom.objects.all()})
 
-def chat(req, roomname):
+def chat(req, roomname: str):
     if not Chatroom.objects.filter(Name=roomname):
-        return error(req)
+        return render(req, 'error.html')
     return render(req, 'chat/chatroom.html', {'roomname': roomname})

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.http import HttpResponse, Http404
 from chat import urls
+from django.shortcuts import render
 from . import views
 
 def error(req):
@@ -28,5 +29,5 @@ urlpatterns = [
     path('', views.wel),
     path('admin/', admin.site.urls),
     path('chat/', include('chat.urls')),
-    re_path('.*?', error),
+    re_path('.*?', views.error),
 ]
