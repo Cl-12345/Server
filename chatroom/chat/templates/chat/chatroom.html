@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>{{roomname}}</title>
     <style>
         .chatbox{
             width: 90%;
-            height: 85dvh;
+            height: 75vh;
             border: 1px solid black;
-            margin: auto;
-            padding: 10px;
+            margin: 20px auto;
+            padding: 20px;
             background-color: rgb(238, 238, 238);
             border-radius: 7px;
         }
@@ -21,16 +22,25 @@
         }
         #message{
             margin: 5px;
-            width: 90%;
+            width: 75%;
         }
     </style>
 </head>
 <body>
+    <h1 style="text-align: center;">{{roomname}} 聊天室</h1>
     <div class="chatbox">{{roomname}}</div>
     <form action="submit", class="message_box">
         <input type="text" name="message" id="message">
         <input type="button" value="发送">
+        <input type="button" value="退出聊天室" id="exit">
     </form>
-    
+    <script>
+        $('#exit').on('click', function(e) {
+            // console.log(window.location.href)
+            if (confirm('你确定要返回主页吗？')) {
+                window.location.href = '../';
+            }
+        });
+    </script>
 </body>
 </html>
