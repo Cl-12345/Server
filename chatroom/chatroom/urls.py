@@ -22,6 +22,7 @@ from django.shortcuts import render
 from . import views
 
 def error(req):
+    print('error' + req)
     return HttpResponse('<p>你来到了未知的区域</p>')
 
 

@@ -25,10 +25,15 @@ SECRET_KEY = 'django-insecure-gwx0j#eo^qj0g=ha#6!l9_w*6bred)vlel3#t^-bb84#t*$5d5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+
+ALLOWED_HOSTS = ['*']
+
+
 
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,6 +46,14 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     # 'chat',
 ]
+
+ASGI_APPLICATION = 'chatroom.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

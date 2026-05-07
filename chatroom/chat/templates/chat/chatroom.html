@@ -28,19 +28,47 @@
 </head>
 <body>
     <h1 style="text-align: center;">{{roomname}} 聊天室</h1>
-    <div class="chatbox">{{roomname}}</div>
-    <form action="submit", class="message_box">
-        <input type="text" name="message" id="message">
-        <input type="button" value="发送">
+    <div id="chatbox">{{roomname}}</div>
+    <form id="submit_box">
+        <input type="text" name="message" id="message" autocomplete="off">
+        <input type="submit" value="发送">
         <input type="button" value="退出聊天室" id="exit">
     </form>
     <script>
+        const ws = new WebSocket('ws://' + window.location.host + '/ws/chat/');
+        const messagesDiv = document.getElementById('chatbox');
+        const input = document.getElementById('input');
+        // const sendBtn = document.getElementById('send');
         $('#exit').on('click', function(e) {
             // console.log(window.location.href)
             if (confirm('你确定要返回主页吗？')) {
                 window.location.href = '../';
             }
         });
+        $('#submit_box').on('submit', function(e){
+            e.preventDefault()
+            console.log($('#message').val())
+            message = $('#message').val()
+            if (!message)
+                return
+            ws.send(JSON.stringify({'message': message}));
+            $('#message').val = ''
+        });
+
+
+       
+
+        ws.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const msgDiv = document.createElement('div');
+            msgDiv.textContent = data.message;
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        };
+
+        // input.addEventListener('keypress', function(e) {
+        //     if (e.key === 'Enter') sendBtn.click();
+        // });
     </script>
 </body>
 </html>
