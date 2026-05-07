@@ -5,9 +5,10 @@ from channels.auth import AuthMiddlewareStack
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chatroom.settings')
 
+# 必须先初始化 Django ASGI
 django_asgi_app = get_asgi_application()
 
-# 在这里导入 routing
+# 再导入 routing（避免循环导入）
 from chat.routing import websocket_urlpatterns
 
 application = ProtocolTypeRouter({
