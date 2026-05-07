@@ -9,7 +9,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chatroom.settings')
 django_asgi_app = get_asgi_application()
 
 # 再导入 routing（避免循环导入）
-from chat.routing import websocket_urlpatterns
+from chats.routing import websocket_urlpatterns
 
 application = ProtocolTypeRouter({
     "http": django_asgi_app,
