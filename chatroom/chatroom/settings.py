@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'chats.apps.ChatConfig',
-    # 'chat',
+    # 'chats.apps.ChatConfig',
+    'chats',
 ]
 
 ASGI_APPLICATION = 'chatroom.asgi.application'

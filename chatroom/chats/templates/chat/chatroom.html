@@ -35,7 +35,7 @@
         <input type="button" value="退出聊天室" id="exit">
     </form>
     <script>
-        const ws = new WebSocket('ws://' + window.location.host + '/ws/chat/');
+        const ws = new WebSocket('ws://127.0.0.1:7999/ws/chat/');
         const messagesDiv = document.getElementById('chatbox');
         const input = document.getElementById('input');
         // const sendBtn = document.getElementById('send');
@@ -47,12 +47,13 @@
         });
         $('#submit_box').on('submit', function(e){
             e.preventDefault()
-            console.log($('#message').val())
+            
             message = $('#message').val()
             if (!message)
                 return
+            console.log(message)
             ws.send(JSON.stringify({'message': message}));
-            $('#message').val = ''
+            $('#message').val('')
         });
 
 
