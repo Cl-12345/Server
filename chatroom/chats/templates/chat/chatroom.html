@@ -35,7 +35,7 @@
         <input type="button" value="退出聊天室" id="exit">
     </form>
     <script>
-        const ws = new WebSocket('ws://127.0.0.1:7999/ws/chat/');
+        const ws = new WebSocket('ws://' + window.location.host + '/ws/chat/');
         const messagesDiv = document.getElementById('chatbox');
         const input = document.getElementById('input');
         // const sendBtn = document.getElementById('send');
