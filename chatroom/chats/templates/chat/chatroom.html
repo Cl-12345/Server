@@ -6,7 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>{{roomname}}</title>
     <style>
-        .chatbox{
+        #chatbox{
             width: 90%;
             height: 75vh;
             border: 1px solid black;
@@ -28,7 +28,7 @@
 </head>
 <body>
     <h1 style="text-align: center;">{{roomname}} 聊天室</h1>
-    <div id="chatbox">{{roomname}}</div>
+    <div id="chatbox"></div>
     <form id="submit_box">
         <input type="text" name="message" id="message" autocomplete="off">
         <input type="submit" value="发送">
