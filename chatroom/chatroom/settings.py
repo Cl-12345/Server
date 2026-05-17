@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
+    'daphne',
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,12 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # 'chats.apps.ChatConfig',
     'chats',
 ]
 
 ASGI_APPLICATION = 'chatroom.asgi.application'
+AUTH_USER_MODEL = 'chats.User'
 
 CHANNEL_LAYERS = {
     'default': {
@@ -132,3 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_REDIRECT_URL = '/chat/'  # 或任意页面名称，如 'home'
+LOGIN_URL = '/login/'     # 未登录用户访问受保护页面时重定向到此

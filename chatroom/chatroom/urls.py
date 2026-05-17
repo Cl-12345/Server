@@ -20,6 +20,7 @@ from django.http import HttpResponse, Http404
 from chats import urls
 from django.shortcuts import render
 from . import views
+from django.contrib.auth import views as auth_views
 
 def error(req):
     print('error' + req)
@@ -29,6 +30,7 @@ def error(req):
 urlpatterns = [
     path('', views.wel),
     path('admin/', admin.site.urls),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('chat/', include('chats.urls')),
     re_path('.*?', views.error),
 ]
